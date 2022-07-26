@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigatorInterfac
     public void start(){
         //set navigation for navigate to detail page
         viewModel.setNavigatorInterface(this);
-        //start to get house list from server with viewmodel
+        //start to get movie list from server with viewmodel
         viewModel.init(getApplicationContext());
     }
     //set observer of viewmodels
@@ -74,11 +74,9 @@ public class MainActivity extends AppCompatActivity implements NavigatorInterfac
             }
         });
     }
-    //init recyclerview for house list
+    //init recyclerview for movie list
     public void initRV(){
         GridLayoutManager layoutManager=new GridLayoutManager(myBinding.recyclerview.getContext(),2);
-//        LinearLayoutManager linearLayoutManager
-//                = new LinearLayoutManager(myBinding.recyclerview.getContext(), LinearLayoutManager.VERTICAL, false);
         myAdapter=new MovieAdapter(viewModel);
         myBinding.recyclerview.setHasFixedSize(true);
         myBinding.recyclerview.setLayoutManager(layoutManager);//linearLayoutManager
@@ -86,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigatorInterfac
         myBinding.recyclerview.setAdapter(myAdapter);
 
     }
-    //go to detail page and send selected house model to detail
+    //go to detail page
     @Override
     public void onItemClick(MovieRoom model) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);

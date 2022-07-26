@@ -25,7 +25,6 @@ public class RetrofitApis {
 
             Call<RequestOutput> call1 = getPlacesInterface.getMovie();
 
-            String str = call1.request().url().toString();
             call1.enqueue(new Callback<RequestOutput>() {
                 @Override
                 public void onResponse(Call<RequestOutput> call, Response<RequestOutput> response) {
@@ -66,7 +65,6 @@ public class RetrofitApis {
         String apikey="3e974fca";
         Call<DetailRoom> call1=getDetailInterface.getDetail(apikey,imdbID) ;
 
-        String str=call1.request().url().toString();
         call1.enqueue(new Callback<DetailRoom>() {
             @Override
             public void onResponse(Call<DetailRoom> call, Response<DetailRoom> response) {

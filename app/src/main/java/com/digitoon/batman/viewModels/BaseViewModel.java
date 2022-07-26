@@ -29,30 +29,13 @@ public class BaseViewModel extends ViewModel implements ConnectionReceiver.Recei
     public void check_net(Context context){
 //        Utilities utilities=new Utilities();
 //        isOnline.setValue(utilities.isOnline(context));
-
-
-            // initialize intent filter
             IntentFilter intentFilter = new IntentFilter();
-
-            // add action
             intentFilter.addAction("android.new.conn.CONNECTIVITY_CHANGE");
-
-            // register receiver
             context.registerReceiver(new ConnectionReceiver(), intentFilter);
-
-            // Initialize listener
             ConnectionReceiver.Listener = this;
-
-            // Initialize connectivity manager
             ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-            // Initialize network info
             NetworkInfo networkInfo = manager.getActiveNetworkInfo();
-
-            // get connection status
             boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
-
-            // display snack bar
             isOnline.setValue(isConnected);
 
     }

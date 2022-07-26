@@ -7,7 +7,6 @@ import com.digitoon.batman.room.MyRoomDataBase;
 
 public class G extends Application {
   public static Context context;
-  public static String baseURL;
   public static MyRoomDataBase myRoomDataBase;
   //------------------------------------------------------------------------------------------------
  @Override

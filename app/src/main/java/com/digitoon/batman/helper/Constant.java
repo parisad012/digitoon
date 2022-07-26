@@ -1,8 +1,6 @@
 package com.digitoon.batman.helper;
 
 public class Constant {
-    public static final int CONTIMEOUT = 90000;
-    public static final int SOCTIMEOUT = 60000;
 
     public static final String URL_GET_MOVIE = "?apikey=3e974fca&s=batman";
     public static final String URL_GET_DETAIL="";

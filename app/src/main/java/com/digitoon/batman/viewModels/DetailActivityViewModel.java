@@ -23,9 +23,6 @@ import java.util.stream.Collectors;
 public class DetailActivityViewModel extends BaseViewModel {
     public MutableLiveData<String> userMessage=new MutableLiveData<>();
     public MutableLiveData<DetailRoom> detailModel=new MutableLiveData<>();
-    public MutableLiveData<String> title=new MutableLiveData<>();
-    public MutableLiveData<String> year=new MutableLiveData<>();
-    public MutableLiveData<String> poster=new MutableLiveData<>();
     DetailRepository detailRepository;
     DetailRoomRepository detailRoomRepository;
     MovieRoomRepository movieRoomRepository;
@@ -45,9 +42,7 @@ public class DetailActivityViewModel extends BaseViewModel {
         movieRoomRepository=MovieRoomRepository.getInstance();
         getDetail(context);
     }
-    public LiveData<String> getPoster(){return poster;}
     public LiveData<Boolean> getIsShowLoading(){return isShowLoading;}
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void getDetail(Context context){
         try{
             if (isOnline.getValue()){//online(context)
@@ -73,7 +68,6 @@ public class DetailActivityViewModel extends BaseViewModel {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void getDataFromDB(String id) throws ExecutionException, InterruptedException {
          DetailRoom detailRoom=dao_getById(id);
          if (detailRoom!=null) {
@@ -81,27 +75,10 @@ public class DetailActivityViewModel extends BaseViewModel {
          }
     }
 
-    public void showData_movie(MovieRoom model){
-        if (model!=null) {
-            DetailRoom dm=new DetailRoom();
-            title.setValue(model.getTitle());
-            year.setValue(model.getYear());
-            poster.setValue(model.getPoster());
-
-        }else{
-            userMessage.setValue("no data find");
-        }
-    }
-
     //show data in ui
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void showData(DetailRoom model){
         if (model!=null) {
             detailModel.setValue(model);
-            String s = model.getRatings().stream().map(e->e.getSource()).collect(Collectors.joining(","));
-            title.setValue(s);
-            poster.setValue(model.getPoster());
-
         }else{
             userMessage.setValue("no data find");
         }
@@ -140,7 +117,6 @@ public class DetailActivityViewModel extends BaseViewModel {
     }
 
     GetDetailResponseInterface getDetailResponseInterface=new GetDetailResponseInterface() {
-        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void updateUI(boolean response, String str, DetailRoom detail) throws ExecutionException, InterruptedException {
             notShowLoading();

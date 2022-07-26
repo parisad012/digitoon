@@ -34,7 +34,7 @@ public class MainActivityViewModel extends BaseViewModel {
         roomRepository=MovieRoomRepository.getInstance();
         isShowLoading.setValue(false);
         try {
-           check_net(context);
+           //check_net(context);
             getMovies(context);
         }catch (Exception ex){
             String str=ex.getMessage();
@@ -47,6 +47,7 @@ public class MainActivityViewModel extends BaseViewModel {
                 if (isOnline.getValue()) {
                     getDataFromServer(context);
                 }else{
+                    userMessage.setValue("no internet");
                     getDataFromDB();
                 }
 
@@ -58,12 +59,12 @@ public class MainActivityViewModel extends BaseViewModel {
     //---------------------------------------------------------
     public void getDataFromServer(Context context){
         try {
-            if (isOnline.getValue()) {
+           // if (isOnline.getValue()) {
                 showLoading();
                 repository.getMovie(getMovieResponseInterface);
-                } else {
-                userMessage.setValue("no internet");
-            }
+//                } else {
+//                userMessage.setValue("no internet");
+       //     }
         }catch (Exception ex){
             notShowLoading();
             userMessage.setValue(ex.getMessage()+"getDataFromServer+mainvm");
@@ -74,11 +75,6 @@ public class MainActivityViewModel extends BaseViewModel {
                  setDataList();
     }
 
-    //---------------------------------------------------------
-//    private int dao_getCount() throws ExecutionException, InterruptedException {
-//        int i= roomRepository.getCount();
-//        return i;
-//    }
     //--------------------------------------------------------
     private List<MovieRoom> dao_getAllMovie() throws ExecutionException, InterruptedException {
         return roomRepository.getAll();

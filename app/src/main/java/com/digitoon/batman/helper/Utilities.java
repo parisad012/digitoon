@@ -1,16 +1,8 @@
 package com.digitoon.batman.helper;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.provider.Settings;
-
-import java.io.IOException;
-import java.text.DecimalFormat;
 
 public class Utilities {
     public Utilities() {

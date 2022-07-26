@@ -36,10 +36,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         imdbID= getIntent().getStringExtra(Constant.MOVIE);
-       // setHouseChar(house);
-        //send selected house to viewmodel
-       // viewModel.setHouse(house);
-        //start to get founder detail from server with viewmodel
         viewModel.setImdbID(imdbID);
         viewModel.init(getApplicationContext());
     }
@@ -80,11 +76,5 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
-    //set characters of selected house from main page
-//    private void setHouseChar(House house){
-//        myBinding.setName(house.getName());
-//        myBinding.setRegion(house.getRegion());
-//        String title=String.join("-", house.getTitles());
-//        myBinding.setTitles(title);
-//    }
+
 }
