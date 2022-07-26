@@ -39,8 +39,80 @@ public class DetailRoom {
     private String Poster;
     private String imdbRating;
     private String Runtime;
+    private String Genre;
+    private String Director;
+    private String Writer;
+    private String Actors;
+    private String Language;
+    private String Country;
+    private String Awards;
+    private String Plot;
     @Ignore
     private List<Rating> Ratings;
+
+    public String getGenre() {
+        return Genre;
+    }
+
+    public void setGenre(String genre) {
+        Genre = genre;
+    }
+
+    public String getDirector() {
+        return Director;
+    }
+
+    public void setDirector(String director) {
+        Director = director;
+    }
+
+    public String getWriter() {
+        return Writer;
+    }
+
+    public void setWriter(String writer) {
+        Writer = writer;
+    }
+
+    public String getActors() {
+        return Actors;
+    }
+
+    public void setActors(String actors) {
+        Actors = actors;
+    }
+
+    public String getLanguage() {
+        return Language;
+    }
+
+    public void setLanguage(String language) {
+        Language = language;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        Country = country;
+    }
+
+    public String getAwards() {
+        return Awards;
+    }
+
+    public void setAwards(String awards) {
+        Awards = awards;
+    }
+
+    public String getPlot() {
+        return Plot;
+    }
+
+    public void setPlot(String plot) {
+        Plot = plot;
+    }
 
     public String getRuntime() {
         return Runtime;

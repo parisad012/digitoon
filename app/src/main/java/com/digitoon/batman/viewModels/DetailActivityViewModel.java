@@ -50,7 +50,7 @@ public class DetailActivityViewModel extends BaseViewModel {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void getDetail(Context context){
         try{
-            if (online(context)){
+            if (isOnline.getValue()){//online(context)
                 //if (dao_getById(imdbID)!=null){
                     showLoading();
                     getDataFromServer(context);
@@ -141,7 +141,9 @@ public class DetailActivityViewModel extends BaseViewModel {
       //  return false;
     }
 
-
+    private void dao_deleteAll(){
+        detailRoomRepository.deleteAll();
+    }
     private void dao_insertDetail(DetailRoom room){
         try {
             DetailWithRatings detailWithRatings=new DetailWithRatings(room,room.getRatings());
@@ -164,12 +166,14 @@ public class DetailActivityViewModel extends BaseViewModel {
             if (response && detail!=null){
                // DetailRoom model=new Mapper().ReqOutToDetailModel(detailOutput);
                 if (detail!=null) {
+                 //   dao_deleteAll();
                     dao_insertDetail(detail);//new Mapper().mapToDetailRoom(model)
                     showData(detail);
                 }
 
             }else{
-                userMessage.setValue(str);
+                userMessage.setValue("no data from server");
+                getDataFromDB(imdbID);
             }
         }
     };

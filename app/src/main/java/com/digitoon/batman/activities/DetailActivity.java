@@ -52,6 +52,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onChanged(DetailRoom detail) {
                // detailRoom.getRatings().stream().map(e->e.getSource()).collect(Collectors.joining(","))
                 myBinding.setTitle(detail.getTitle());
+                myBinding.setDetail(detail);
                 try {
                     if (!detail.getPoster().isEmpty()) {
                         Picasso.get().load(detail.getPoster()).fit().centerCrop()

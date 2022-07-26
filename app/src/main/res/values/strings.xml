@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">batman</string>
+    <string name="awards">"Awards: "</string>
+    <string name="country">"Country: "</string>
+    <string name="language">"Language: "</string>
+    <string name="actors">"Actors: "</string>
+    <string name="writer">"Writer: "</string>
+    <string name="director">"Director: "</string>
+    <string name="genre">"Genre: "</string>
+    <string name="more_info">More Info</string>
+    <string name="description">Description</string>
 </resources>

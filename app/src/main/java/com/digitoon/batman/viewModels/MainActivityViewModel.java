@@ -40,7 +40,7 @@ public class MainActivityViewModel extends BaseViewModel {
         roomRepository=MovieRoomRepository.getInstance();
         isShowLoading.setValue(false);
         try {
-            check_net(context);
+           check_net(context);
             getMovies(context);
         }catch (Exception ex){
             String str=ex.getMessage();
@@ -51,10 +51,9 @@ public class MainActivityViewModel extends BaseViewModel {
     private void getMovies(Context context) throws ExecutionException, InterruptedException {
         try{
                 if (isOnline.getValue()) {
-                    dao_deleteAllPlaces();
                     getDataFromServer(context);
                 }else{
-                    getDataFromDB(context);
+                    getDataFromDB();
                 }
 
         }catch (Exception ex){
@@ -77,7 +76,7 @@ public class MainActivityViewModel extends BaseViewModel {
         }
     }
     //---------------------------------------------------------
-    private void getDataFromDB(Context context) throws ExecutionException, InterruptedException {
+    private void getDataFromDB() throws ExecutionException, InterruptedException {
                  setDataList();
     }
 
@@ -97,7 +96,7 @@ public class MainActivityViewModel extends BaseViewModel {
         roomRepository.insert(movieList.getValue());
     }
     //--------------------------------------------------------
-    private void dao_deleteAllPlaces(){
+    private void dao_deleteAll(){
         roomRepository.deleteAll();
     }
     //--------------------------------------------------------
@@ -131,10 +130,12 @@ public class MainActivityViewModel extends BaseViewModel {
                 //Movie
                 List<MovieRoom> movies=requestOutput.getSearch();//new Mapper().ReqOutToPlaceModel(requestOutput);
                 movieList.setValue(movies);
+                dao_deleteAll();
                 dao_saveList();
                 setDataList();
             }else{
                 userMessage.setValue("no data from server");
+                getDataFromDB();
             }
         }
     };
