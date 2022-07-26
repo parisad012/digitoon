@@ -31,7 +31,6 @@ public class DetailActivityViewModel extends BaseViewModel {
         this.imdbID=id;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void init(Context context) {
         super.init(context);

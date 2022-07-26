@@ -31,7 +31,6 @@ public class DetailActivity extends AppCompatActivity {
         setObserver();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onResume() {
         super.onResume();
@@ -43,7 +42,6 @@ public class DetailActivity extends AppCompatActivity {
     //set observer of DetailActViewModels
     public void setObserver(){
         viewModel.getDetailModel().observe(this, new Observer<DetailRoom>() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onChanged(DetailRoom detail) {
                // detailRoom.getRatings().stream().map(e->e.getSource()).collect(Collectors.joining(","))
