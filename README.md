@@ -1,5 +1,5 @@
 # digitoon
-he architecture used in this app is MVVM.
+the architecture used in this app is MVVM.
 layers:
 activites: ui of app(view of mvvm)
 adapters: adapter for recyclerView in main page 
