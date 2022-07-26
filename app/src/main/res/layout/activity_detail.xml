@@ -177,7 +177,7 @@
                             android:id="@+id/directorTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/genreTitle"
+                            android:layout_below="@+id/genre"
                             android:layout_alignParentStart="true"
                             android:text="@string/director"
                             android:textColor="@color/yellow" />
@@ -188,13 +188,13 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
                             android:layout_toEndOf="@+id/directorTitle"
-                        android:layout_below="@+id/genreTitle"/>
+                        android:layout_below="@+id/genre"/>
 
                         <TextView
                             android:id="@+id/writerTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/directorTitle"
+                            android:layout_below="@+id/director"
                             android:layout_alignParentStart="true"
                             android:text="@string/writer"
                             android:textColor="@color/yellow" />
@@ -205,13 +205,13 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
                             android:layout_toEndOf="@+id/writerTitle"
-                        android:layout_below="@+id/directorTitle"/>
+                        android:layout_below="@+id/director"/>
 
                         <TextView
                             android:id="@+id/actorTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/writerTitle"
+                            android:layout_below="@+id/writer"
                             android:layout_alignParentStart="true"
                             android:text="@string/actors"
                             android:textColor="@color/yellow" />
@@ -222,13 +222,13 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
                             android:layout_toEndOf="@+id/actorTitle"
-                            android:layout_below="@+id/writerTitle"/>
+                            android:layout_below="@+id/writer"/>
 
                         <TextView
                             android:id="@+id/languageTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/actorTitle"
+                            android:layout_below="@+id/actors"
                             android:layout_alignParentStart="true"
                             android:text="@string/language"
                             android:textColor="@color/yellow" />
@@ -238,14 +238,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:layout_below="@+id/actorTitle"
+                            android:layout_below="@+id/actors"
                             android:layout_toEndOf="@+id/languageTitle"/>
 
                         <TextView
                             android:id="@+id/countryTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/languageTitle"
+                            android:layout_below="@+id/language"
                             android:layout_alignParentStart="true"
                             android:text="@string/country"
                             android:textColor="@color/yellow" />
@@ -255,14 +255,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:layout_toEndOf="@+id/languageTitle"
+                            android:layout_toEndOf="@+id/countryTitle"
                             android:layout_below="@+id/languageTitle"/>
 
                         <TextView
                             android:id="@+id/awardTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/countryTitle"
+                            android:layout_below="@+id/country"
                             android:layout_alignParentStart="true"
                             android:text="@string/awards"
                             android:textColor="@color/yellow" />
@@ -272,7 +272,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:layout_toEndOf="@+id/countryTitle"
+                            android:layout_toEndOf="@+id/awardTitle"
                             android:layout_below="@+id/countryTitle"/>
 
                     </RelativeLayout>
