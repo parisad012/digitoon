@@ -10,3 +10,4 @@ repositories: implementation of retrofit api's
 retrofits: classes for building retrofit, retrofit apis and interfaces 
 viewModels: view models for relation with ui's.(viewmodel of mvvm)
 room :all model,class,interface needed for working with room db
+
