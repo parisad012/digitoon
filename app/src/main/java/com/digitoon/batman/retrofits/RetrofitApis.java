@@ -1,8 +1,11 @@
 package com.digitoon.batman.retrofits;
 
 import com.digitoon.batman.models.RequestOutput;
+import com.digitoon.batman.retrofits.Detail.GetDetailInterface;
+import com.digitoon.batman.retrofits.Detail.GetDetailResponseInterface;
 import com.digitoon.batman.retrofits.Movie.GetMovieInterface;
 import com.digitoon.batman.retrofits.Movie.GetMovieResponseInterface;
+import com.digitoon.batman.room.detail.DetailRoom;
 
 import java.util.concurrent.ExecutionException;
 
@@ -56,6 +59,45 @@ public class RetrofitApis {
         }catch (Exception ex){
             mInterface.updateUI(false,"getPlaces + RetrofitApis",null);
         }
+    }
+    //----------------------------------------------------------------------------------------------
+    public void getDetail(GetDetailResponseInterface mInterface, String imdbID){
+        GetDetailInterface getDetailInterface = APIClient.getClient().create(GetDetailInterface.class);
+        String apikey="3e974fca";
+        Call<DetailRoom> call1=getDetailInterface.getDetail(apikey,imdbID) ;
+
+        String str=call1.request().url().toString();
+        call1.enqueue(new Callback<DetailRoom>() {
+            @Override
+            public void onResponse(Call<DetailRoom> call, Response<DetailRoom> response) {
+                try {
+                    String s = response.toString();
+                    if (response != null && response.code() == 200) {
+                        DetailRoom requestOutput = response.body();
+                        mInterface.updateUI(true, "", requestOutput);
+
+                    } else {
+                        mInterface.updateUI(false, "داده ای دریافت نشد", null);
+                    }
+                }
+                catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetailRoom> call, Throwable t) {
+                try {
+                    mInterface.updateUI(false,"failure : "+t.getMessage(),null);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
     //----------------------------------------------------------------------------------------------
 

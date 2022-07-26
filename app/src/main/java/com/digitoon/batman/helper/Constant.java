@@ -10,8 +10,8 @@ public class Constant {
     //-----------------------------------------------------------------
     //Dao table names
     public static final String table_movie="table_movie";
-    public static final String table_location="table_location";
     public static final String table_detail="table_detail";
+    public static final String table_rating="table_rating";
     //-----------------------------------------------------------------
    public static final String MOVIE="movie";
 }

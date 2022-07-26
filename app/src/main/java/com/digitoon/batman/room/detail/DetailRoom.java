@@ -1,24 +1,29 @@
-package com.digitoon.batman.room.movie;
+package com.digitoon.batman.room.detail;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.digitoon.batman.helper.Constant;
+import com.digitoon.batman.room.rating.Rating;
 
-import java.io.Serializable;
+import java.util.List;
 
-@Entity(tableName = Constant.table_movie)
-public class MovieRoom {
+
+@Entity(tableName = Constant.table_detail)
+public class DetailRoom {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "tableId")
-    private int tableId;
-    public int getTableId() {
-        return tableId;
+    @ColumnInfo(name = "detailId")
+    private int detailId;
+
+    public int getDetailId() {
+        return detailId;
     }
-    public void setTableId(int tableId) {
-        this.tableId = tableId;
+
+    public void setDetailId(int detailId) {
+        this.detailId = detailId;
     }
     //-----------------------
 
@@ -32,6 +37,26 @@ public class MovieRoom {
     private String Type;
     @ColumnInfo(name = "Poster")
     private String Poster;
+    private String imdbRating;
+    private String Runtime;
+    @Ignore
+    private List<Rating> Ratings;
+
+    public String getRuntime() {
+        return Runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        Runtime = runtime;
+    }
+
+    public String getImdbRating() {
+        return imdbRating;
+    }
+
+    public void setImdbRating(String imdbRating) {
+        this.imdbRating = imdbRating;
+    }
 
     public String getTitle() {
         return Title;
@@ -71,5 +96,13 @@ public class MovieRoom {
 
     public void setPoster(String poster) {
         Poster = poster;
+    }
+
+    public List<Rating> getRatings() {
+        return Ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        Ratings = ratings;
     }
 }

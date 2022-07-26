@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigatorInterfac
     @Override
     public void onItemClick(MovieRoom model) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        intent.putExtra(Constant.MOVIE,model);
+        intent.putExtra(Constant.MOVIE,model.getImdbID());
         startActivity(intent);
     }
 }

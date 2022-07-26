@@ -130,12 +130,6 @@ public class MainActivityViewModel extends BaseViewModel {
             if (response && requestOutput!=null) {
                 //Movie
                 List<MovieRoom> movies=requestOutput.getSearch();//new Mapper().ReqOutToPlaceModel(requestOutput);
-//                List<PlaceModel> old_pr = placeList.getValue();
-//                if (old_pr==null){
-//                    old_pr=new ArrayList<>();
-//                }
-//                old_pr.addAll(places);
-//                placeList.setValue(old_pr);
                 movieList.setValue(movies);
                 dao_saveList();
                 setDataList();

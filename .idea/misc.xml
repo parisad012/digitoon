@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/paris/AndroidStudioProjects/batman/app/src/main/res/drawable/corner_white2.xml" value="0.2045" />
         <entry key="..\:/Users/paris/AndroidStudioProjects/batman/app/src/main/res/drawable/ic_no_category.xml" value="0.2045" />
+        <entry key="..\:/Users/paris/AndroidStudioProjects/batman/app/src/main/res/layout/activity_detail.xml" value="0.2" />
         <entry key="..\:/Users/paris/AndroidStudioProjects/batman/app/src/main/res/layout/activity_main.xml" value="0.6" />
+        <entry key="..\:/Users/paris/AndroidStudioProjects/batman/app/src/main/res/layout/layout_movie_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/paris/AndroidStudioProjects/batman/app/src/main/res/layout/layout_place_item.xml" value="0.22826086956521738" />
       </map>
     </option>
