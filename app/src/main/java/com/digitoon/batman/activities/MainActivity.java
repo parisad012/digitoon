@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
@@ -75,11 +76,12 @@ public class MainActivity extends AppCompatActivity implements NavigatorInterfac
     }
     //init recyclerview for house list
     public void initRV(){
-        LinearLayoutManager linearLayoutManager
-                = new LinearLayoutManager(myBinding.recyclerview.getContext(), LinearLayoutManager.VERTICAL, false);
+        GridLayoutManager layoutManager=new GridLayoutManager(myBinding.recyclerview.getContext(),2);
+//        LinearLayoutManager linearLayoutManager
+//                = new LinearLayoutManager(myBinding.recyclerview.getContext(), LinearLayoutManager.VERTICAL, false);
         myAdapter=new MovieAdapter(viewModel);
         myBinding.recyclerview.setHasFixedSize(true);
-        myBinding.recyclerview.setLayoutManager(linearLayoutManager);
+        myBinding.recyclerview.setLayoutManager(layoutManager);//linearLayoutManager
         myBinding.recyclerview.setItemAnimator(new DefaultItemAnimator());
         myBinding.recyclerview.setAdapter(myAdapter);
 

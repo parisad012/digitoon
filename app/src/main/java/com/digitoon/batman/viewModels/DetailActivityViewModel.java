@@ -51,17 +51,9 @@ public class DetailActivityViewModel extends BaseViewModel {
     public void getDetail(Context context){
         try{
             if (isOnline.getValue()){//online(context)
-                //if (dao_getById(imdbID)!=null){
                     showLoading();
                     getDataFromServer(context);
 
-              //  }
-//                else{
-//                    //at first get data from places
-//                    PlaceRoom placeRoom=dao_getById_place(venueId);
-//                    showData_place(placeRoom);
-//
-//                }
             }else{
                 userMessage.setValue("no internet");
                 getDataFromDB(imdbID);
@@ -75,7 +67,6 @@ public class DetailActivityViewModel extends BaseViewModel {
 
     public void getDataFromServer(Context context) throws ExecutionException, InterruptedException {
         try {
-          //  showLoading();
             detailRepository.getDetail(getDetailResponseInterface, imdbID);
         }catch (Exception ex){
             String str=ex.getMessage();
@@ -86,20 +77,13 @@ public class DetailActivityViewModel extends BaseViewModel {
     public void getDataFromDB(String id) throws ExecutionException, InterruptedException {
          DetailRoom detailRoom=dao_getById(id);
          if (detailRoom!=null) {
-            // DetailModel model = new Mapper().mapToDetailModel(detailRoom);
              showData(detailRoom);
          }
-//         else{
-//             MovieRoom movieRoom =dao_getById_place(id);
-//             showData_movie(movieRoom);
-//         }
     }
 
     public void showData_movie(MovieRoom model){
         if (model!=null) {
             DetailRoom dm=new DetailRoom();
-           // dm=new Mapper().PlaceRoomToDetailModel(model);
-          //  detailModel.setValue(dm);
             title.setValue(model.getTitle());
             year.setValue(model.getYear());
             poster.setValue(model.getPoster());
@@ -114,7 +98,6 @@ public class DetailActivityViewModel extends BaseViewModel {
     public void showData(DetailRoom model){
         if (model!=null) {
             detailModel.setValue(model);
-//            title.setValue(model.getTitle());
             String s = model.getRatings().stream().map(e->e.getSource()).collect(Collectors.joining(","));
             title.setValue(s);
             poster.setValue(model.getPoster());
@@ -136,18 +119,16 @@ public class DetailActivityViewModel extends BaseViewModel {
     //check for internet
     private Boolean online(Context context){
         check_net(context);
-        Boolean myTest=getIsOnline().getValue();
         return getIsOnline().getValue();
       //  return false;
     }
 
-    private void dao_deleteAll(){
-        detailRoomRepository.deleteAll();
+    private void dao_deleteById(String imdbId){
+        detailRoomRepository.deleteById(imdbId);
     }
     private void dao_insertDetail(DetailRoom room){
         try {
             DetailWithRatings detailWithRatings=new DetailWithRatings(room,room.getRatings());
-//            detailRoomRepository.insert(room);
             detailRoomRepository.insert(detailWithRatings);
         }catch(Exception ex){
             String str=ex.getMessage();
@@ -164,10 +145,9 @@ public class DetailActivityViewModel extends BaseViewModel {
         public void updateUI(boolean response, String str, DetailRoom detail) throws ExecutionException, InterruptedException {
             notShowLoading();
             if (response && detail!=null){
-               // DetailRoom model=new Mapper().ReqOutToDetailModel(detailOutput);
                 if (detail!=null) {
-                 //   dao_deleteAll();
-                    dao_insertDetail(detail);//new Mapper().mapToDetailRoom(model)
+                    dao_deleteById(detail.getImdbID());
+                    dao_insertDetail(detail);
                     showData(detail);
                 }
 

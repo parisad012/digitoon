@@ -41,6 +41,9 @@ public class DetailRoomRepository {
     public void deleteAll(){
         new DeleteAllAsyncTask(myDao).execute();
     }
+    public void deleteById(String id){
+        new DeleteByIdAsyncTask(myDao,id).execute();
+    }
 
     public Integer getCount() throws ExecutionException, InterruptedException {
          return new GetCountAsyncTask(myDao).execute().get();
@@ -67,6 +70,21 @@ public class DetailRoomRepository {
         @Override
         protected Void doInBackground(Void... voids) {
             mAsyncTaskDao.deleteAll();
+            return null;
+        }
+    }
+    //----------------------------------------------------
+    private static class DeleteByIdAsyncTask extends AsyncTask<Void, Void, Void> {
+        private DetailDao mAsyncTaskDao;
+        private String id;
+        DeleteByIdAsyncTask(DetailDao dao,String id){
+            mAsyncTaskDao = dao;
+            this.id=id;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteById(id);
             return null;
         }
     }

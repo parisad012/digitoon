@@ -1,24 +1,18 @@
 package com.digitoon.batman.viewModels;
 
 import android.content.Context;
-import android.location.Location;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 
-import com.digitoon.batman.helper.Constant;
 import com.digitoon.batman.interfaces.NavigatorInterface;
-import com.digitoon.batman.models.Movie;
 import com.digitoon.batman.models.RequestOutput;
 import com.digitoon.batman.repositories.MovieRepository;
 import com.digitoon.batman.retrofits.Movie.GetMovieResponseInterface;
 import com.digitoon.batman.room.movie.MovieRoom;
 import com.digitoon.batman.room.movie.MovieRoomRepository;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -91,8 +85,6 @@ public class MainActivityViewModel extends BaseViewModel {
     }
     //--------------------------------------------------------
     private void dao_saveList(){
-//        Mapper mapper=new Mapper();
-//        roomRepository.insert(mapper.mapToEntity_list(movieList.getValue()));
         roomRepository.insert(movieList.getValue());
     }
     //--------------------------------------------------------
@@ -105,8 +97,6 @@ public class MainActivityViewModel extends BaseViewModel {
     }
     //--------------------------------------------------------
     public void setDataList() throws ExecutionException, InterruptedException {
-//       Mapper mapper=new Mapper();
-//        movieList.setValue(mapper.mapToModel_list(dao_getAllMovie()));
         movieList.setValue(dao_getAllMovie());
     }
     //--------------------------------------------------------
@@ -128,7 +118,7 @@ public class MainActivityViewModel extends BaseViewModel {
             //save to database
             if (response && requestOutput!=null) {
                 //Movie
-                List<MovieRoom> movies=requestOutput.getSearch();//new Mapper().ReqOutToPlaceModel(requestOutput);
+                List<MovieRoom> movies=requestOutput.getSearch();
                 movieList.setValue(movies);
                 dao_deleteAll();
                 dao_saveList();

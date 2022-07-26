@@ -26,6 +26,9 @@ public interface DetailDao {
     @Query("DELETE FROM "+ Constant.table_detail)
     void deleteAll();
 
+    @Query("DELETE FROM "+ Constant.table_detail+" WHERE imdbID= :id")
+    void deleteById(String id);
+
     @Query("SELECT * FROM "+Constant.table_detail)
     List<DetailRoom> selectAll();
 
